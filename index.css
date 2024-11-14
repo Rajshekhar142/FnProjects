@@ -2,32 +2,24 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
     background-color: #f0f0f0;
+    text-align: center;
+    padding: 20px;
   }
   
-  .heading {
-    text-align: center;
+  .inputsection {
     margin-bottom: 20px;
   }
   
-  .head {
-    font-size: 36px;
+  label {
     font-weight: bold;
-    color: #333;
+    margin-right: 10px;
   }
   
-  .hide {
-    font-size: 14px;
-    color: #888;
-    margin-top: 10px;
-  }
-  
-  .heading2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
   button {
@@ -39,25 +31,15 @@ body {
     cursor: pointer;
   }
   
-  .heading3 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  .imagesection {
+    display: flex;
+    justify-content: center;
   }
   
-  .messages {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 5px;
-  }
   
-  #message {
-    font-size: 16px;
-    line-height: 1.5;
+  #front{
+    margin-right: 20px;
   }
-  
-  #motopara, #motoparaa {
-    margin-top: 10px;
-    font-style: italic;
+  #back{
+    margin-left: 20px;
   }

@@ -1,67 +1,42 @@
-const subjects = [
-    "The curious cat",
-    "The sleepy dog",
-    "The happy child",
-    "The wise old owl",
-    "The hungry lion"
-];
+async function fetchData (pokename = 'psyduck'){
 
-const verbs = [
-    "is running",
-    "has eaten",
-    "will sleep",
-    "can fly",
-    "should study"
-];
+    const front = document.querySelector('#front');
+    const back = document.querySelector('#back');
+    
+    try{
+        const rawdata = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokename}`);
+        if(!rawdata.ok){
+            throw new Error('pokemon not found');
+        }
+        const data = await rawdata.json();
+        const fsource = data.sprites.front_default;
+        const bsource = data.sprites.back_default;
+        front.src = fsource;
+        back.src = bsource;
 
+        front.style.display = 'block';
+        back.style.display = 'block';
+        
 
-const modifiers = [
-    "very quickly",
-    "extremely loudly",
-    "quite slowly",
-    "incredibly carefully",
-    "really happily"
-];
-
-const quotes = [
-    "The only way to do great work is to love what you do.",
-    "It does not matter how slowly you go as long as you do not stop.",
-    "Your time is limited, so don't waste it living someone else's life.",
-    "Believe you can and you're halfway there.",
-    "The best way out is always through."
-];
-
-const authors = [
-    "Steve Jobs",
-    "Confucius",
-    "Steve Jobs",
-    "Theodore Roosevelt",
-    "Robert Frost"
-];
-
-function randomBlock(element){
-    let elementi = Math.floor(Math.random()*5);
-    return element[elementi];
+    }
+    catch(error){
+        console.log(error)
+    }
 }
-const message = document.querySelector('#message');
-const button = document.querySelector('#start');
-const motobutton = document.querySelector('#motivation');
-const motopara = document.querySelector('#motopara');
-const motoparaa = document.querySelector('#motoparaa');
-button.addEventListener("click",()=>{
-    message.innerHTML = ` ${randomBlock(subjects)} ${randomBlock(verbs)} ${randomBlock(modifiers)}`;
+const inp = document.querySelector('#pokename');
+inp.addEventListener('change', () => {
+    const pokename = inp.value;
+    fetchData(pokename);
 })
 
-let clickCount = 0;
+//fetchData();
 
-motobutton.addEventListener('click', (event)=>{
-    clickCount++;
-    if(clickCount < 5){
-        motopara.innerHTML = quotes[clickCount];
-        motoparaa.innerHTML = authors[clickCount];
-    }
-    else{
-        clickCount = clickCount % 5;
-    }
-})
+// clearly the code gets broken down once the pokemon is not available use error handling to save the code from breaking
+// down..
+// i pass...
 
+// i challenge you to generate the async version of same..
+// well i pass... 
+
+// now that you know dom and fetching try to print the image of the pokemon.
+// finally did it 🤘🤘🤘
