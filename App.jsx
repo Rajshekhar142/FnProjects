@@ -63,10 +63,51 @@ function Footer(props){
     </>
   )
 }
+
+function Children({children}){
+  return(
+    <div className="bg-slate-500">
+      <p className="font-bold">what do i think these days.</p>
+      {children}
+    </div>
+  )
+}
+
+function ConditionalRender({xl}){
+  if(xl){
+    return <h1 className="">SENBONZAKURA KAGEYOSHI 🌸🌸</h1>
+  }
+  return <h1 className="">SCATTER KYOKASUIGETSU 🤯😬</h1>
+  // alternativ xl ? <h1 className="">SENBONZAKURA KAGEYOSHI 🌸🌸</h1> :   <h1 className="">SCATTER KYOKASUIGETSU 🤯😬</h1>
+}
+function NullReturn{
+  return null
+}
+
+function ListRenderer({list}){
+  return(
+    
+      <ul className="font-bold text-orange-400 bg-white flex justify-center">
+        {list.map((item) => <li key = {item}>{item}</li>)}
+      </ul>
+    
+  )
+}
 function App() {
+  
   const value = 1;
+  const books = ['thinking fast and slow ' , 'meditation' , 'discourses' , 'how to become a straight a student']
   return(
     <div>
+      <ListRenderer list = {books}></ListRenderer>
+        <NullReturn></NullReturn>
+        <ConditionalRender xl = {true}></ConditionalRender>
+        <ConditionalRender xl = {false}></ConditionalRender>
+
+        <Children>
+          <h2 className="text-white font-serif">i don't know bro</h2>
+          <p className="text-blue-800 font-bold">but there has to be something</p>
+        </Children>
         <Header src = {img3}/>
         <h1 className='font-bold underline bg-slate-400 text-xl flex justify-center mb-10 p-8'>Welcome to our Book Store .</h1>
         <ul>
